@@ -20,6 +20,7 @@ body{
     background: transparent;
 }
 h1{
+    border: 1px solid red;
     padding-top: 70px;
     padding-bottom: 0px;
     margin-top: 60px;
@@ -36,10 +37,6 @@ h1{
     margin-right: auto;
 }
 h4{
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
     line-height: normal;
     letter-spacing: 0.4em;
     font-size: 15px;
@@ -47,6 +44,8 @@ h4{
     text-align: center;
     justify-self: center;
     align-self: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .img{
     clip-path: circle();
@@ -54,17 +53,23 @@ h4{
     display: flex;
     justify-content: center;
     z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
 }
 p{
     text-align: center;
     justify-self: center;
     align-self: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .p1{
     font-size: 12px;
     text-align: center;
     justify-self: center;
     align-self: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .btn{
     padding: 1px;
@@ -74,6 +79,8 @@ p{
     justify-self: center;
     position: relative;
     z-index: 10;
+    margin-left: auto;
+    margin-right: auto;
 }
 a{
     margin: 10px;

@@ -108,9 +108,14 @@ img{
 button{
     background-color:#00000000;
     border: none;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 button:hover{
+    transform: scale(1.22);
     cursor: pointer;
+}
+#langIcon{
+    border-radius: 35%;
 }
 .circles{
     position: fixed;

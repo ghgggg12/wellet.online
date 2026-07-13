@@ -52,8 +52,6 @@ h4{
     margin-right: auto;
 }
 .img{
-    border: 5px solid black;
-    border-radius: 100%;
     margin: 20px;
     justify-self: center;
     display: flex;

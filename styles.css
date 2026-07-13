@@ -25,20 +25,20 @@ body.dark-theme {
     background: transparent;
 }
 h1{
-    padding-top: 70px;
-    padding-bottom: 0px;
-    margin-top: 60px;
-    margin-bottom: 0px;
-    line-height: normal;
-    letter-spacing: 0.20em;
-    font-size: 50px;
-    font-style: normal;
-    color: #000;
     text-align: center;
     justify-self: center;
     align-self: center;
     margin-left: auto;
     margin-right: auto;
+    line-height: normal;
+    padding-top: 70px;
+    padding-bottom: 0px;
+    margin-top: 60px;
+    margin-bottom: 0px;
+    letter-spacing: 0.20em;
+    font-size: 50px;
+    font-style: normal;
+    color: #000;
 }
 h4{
     line-height: normal;
@@ -61,6 +61,12 @@ h4{
     margin-left: auto;
     margin-right: auto;
 }
+.img img{
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.img img:hover{
+    transform: scale(1.1);
+}
 .info{
     text-align: center;
     justify-self: center;
@@ -69,12 +75,12 @@ h4{
     margin-right: auto;
 }
 .proof{
-    font-size: 12px;
     text-align: center;
     justify-self: center;
     align-self: center;
     margin-left: auto;
     margin-right: auto;
+    font-size: 12px;
 }
 .btn{
     padding: 1px;
@@ -96,42 +102,71 @@ a:hover img{
     transform: scale(1.2);
     filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 40px rgba(0, 0, 0, 0.3));
 }
-img{
+a img{
     border-radius: 20%;
     transition: transform 0.3s ease, filter 0.3s ease;
     display: block;
 }
 .language{
     display: inline-block;
-    position: relative;
-    justify-self: left;
-    left: auto;
-    bottom: 580px;
+    position: fixed;
+    top: 16px;
+    left: 20px;
     z-index: 10;
     padding: 0px;
     margin: 10px;
 }
-.btntm{
-    display: inline-block;
-    position: relative;
-    justify-self: left;
-    bottom: 582.4px;
-    right: 10px;
-    z-index: 10;
-    padding: 0px;
-    margin: 10px;
-}
-button{
+.language button{
     background-color:#00000000;
     border: none;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
-button:hover{
+.language button:hover{
     transform: scale(1.22);
     cursor: pointer;
 }
 #langIcon{
     border-radius: 35%;
+}
+.btntm{
+    display: inline-block;
+    position: fixed;
+    top: 30px;
+    right: 3ch;
+    z-index: 10;
+    padding: 0px;
+    margin: 0px;
+}
+.btntm button{
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+.btntm button:hover{
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+.btntm button:active{
+    transform: scale(0.9);
+}
+.btntm button img{
+    display: block;
+    width: 32px;
+    height: 32px;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 50%;
+    object-fit: contain;
 }
 .circles{
     position: fixed;

@@ -3,63 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="icon" href="icon/favicon.ico" type="image/x-icon">
-    <link rel="icon", type="image/png", href="icon/favicon.png">
+    <link rel="icon" type="image/png" href="icon/favicon.png">
+
     <link rel="stylesheet" type="text/css" href="styles.css">
+
     <script src="script.js"></script><!--wow-->
 </head>
 <body>
     <div class="area" >
         <!-- Hello! -->
-        <h1>Wellett</h1>
-        <h4 data-i18n="aka">a.k.a. ZAZOR</h4>
+        <div>
+            <h1>Wellett</h1>
+            <h4 data-i18n="aka">a.k.a. ZAZOR</h4>
+
+            <div class="img">
+                <img src="img/sda.gif" alt="Avatar" width="200" height="200">
+            </div>
+        </div>
+
+        <div>
+            <div class="proof" data-i18n="proof">Proofreader Lunar Client</div>
+            <div class="info" data-i18n="info">Learning GLua, HTML, CSS and JS.</div>
+        </div>
+
+        <div>
+            <div class="btn">
+                <a href="https://github.com/ghgggg12" target="_blank">
+                    <img src="img/GIT.png" alt="GIT" title="My GitHub" width="70" height="70">
+                </a>
+
+                <a href="https://discordapp.com/users/858958180800266260" target="_blank">
+                    <img src="img/DS.png" alt="DS" title="My Discord" width="70" height="70">
+                </a>
+                
+                <a href="https://www.twitch.tv/welllett" target="_blank">
+                    <img src="img/TW.png" alt="TW" title="My Twitch" width="70" height="70">
+                </a>
+                
+                <a href="https://www.youtube.com/@Wellett-0" target="_blank">
+                    <img src="img/YT.png" alt="YT" title="My YouTube" width="70" height="70">
+                </a>
+            </div>
+        </div>
         
-        <div class="img">
-            <img src="img/sda.gif" alt="Avatar" width="200" height="200">
+        <div>
+            <div class="language">
+                <button type="button" onclick="toggleLanguage()">
+                    <img id="langIcon" src="icon/us.svg" alt="EN" title="Switch Language" width="45" height="45">
+                </button>
+            </div>
+            <div class="btntm">
+                <button type="button" onclick="toggleTheme()">
+                    <img id="tmIcon" src="icon/white.svg" alt="sun" width="32" height="32">
+                </button>
+            </div>
         </div>
 
-        <div class="proof" data-i18n="proof">Proofreader Lunar Client</div>
-        <div class="info" data-i18n="info">Learning GLua, HTML, CSS and JS.</div>
-
-        <div class="btn">
-            <a href="https://github.com/ghgggg12" target="_blank">
-                <img src="img/GIT.png" alt="GIT" title="My GitHub" width="70" height="70">
-            </a>
-
-            <a href="https://discordapp.com/users/858958180800266260" target="_blank">
-                <img src="img/DS.png" alt="DS" title="My Discord" width="70" height="70">
-            </a>
-            
-            <a href="https://www.twitch.tv/welllett" target="_blank">
-                <img src="img/TW.png" alt="TW" title="My Twitch" width="70" height="70">
-            </a>
-            
-            <a href="https://www.youtube.com/@Wellett-0" target="_blank">
-                <img src="img/YT.png" alt="YT" title="My YouTube" width="70" height="70">
-            </a>
+        <div>
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
-        <div class="language">
-            <button type="button" onclick="toggleLanguage()">
-                <img id="langIcon" src="icon/us.svg" alt="EN" title="Switch Language" width="40" height="40">
-            </button>
-        </div>
-        <div class="btntm">
-            <button type="button" onclick="toggleTheme()">
-                <img id="tmIcon" src="icon/white.svg" alt="sun" width="32" height="32">
-            </button>
-        </div>
-        <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
     </div >
 </body>
 </html>

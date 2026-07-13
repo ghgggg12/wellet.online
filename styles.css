@@ -13,6 +13,11 @@ body{
     /*background-image: url(img/sda.png);
     background-repeat: repeat;*/
 }
+body.dark-theme {
+    background: #0a0a1a;
+    background: -webkit-linear-gradient(to left, #1a1a3e, #0a0a1a);
+    background: linear-gradient(to left, #1a1a3e, #121233);
+}
 .area{
     width: 100%;
     min-height: 100vh;
@@ -96,11 +101,21 @@ img{
     display: block;
 }
 .language{
-    display: flex;
+    display: inline-block;
     position: relative;
     justify-self: left;
     left: auto;
     bottom: 580px;
+    z-index: 10;
+    padding: 0px;
+    margin: 10px;
+}
+.btntm{
+    display: inline-block;
+    position: relative;
+    justify-self: left;
+    bottom: 582.4px;
+    right: 10px;
     z-index: 10;
     padding: 0px;
     margin: 10px;
@@ -133,7 +148,7 @@ button:hover{
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(11, 0, 107, 0.247);
+    background: rgba(14, 0, 141, 0.247);
     animation: animate 25s linear infinite;
     bottom: -150px;
 }

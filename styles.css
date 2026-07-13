@@ -52,9 +52,10 @@ h4{
     margin-right: auto;
 }
 .img{
+    clip-path: circle();
     margin: 20px;
-    justify-self: center;
     display: flex;
+    justify-self: center;
     justify-content: center;
     z-index: 1;
     margin-left: auto;

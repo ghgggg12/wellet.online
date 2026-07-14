@@ -47,6 +47,7 @@ h4{
     text-align: center;
     justify-self: center;
     align-self: center;
+    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -57,10 +58,11 @@ h4{
     justify-self: center;
     justify-content: center;
     z-index: 1;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0px;
 }
 .img img{
+    border:3.5px solid black;
+    border-radius: 100%;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 .img img:hover{
@@ -70,20 +72,21 @@ img.ava{
     width: 200;
     height: 200;
 }
-.info{
-    text-align: center;
-    justify-self: center;
-    align-self: center;
-    margin-left: auto;
-    margin-right: auto;
-}
 .proof{
+    margin-top: 20px;
     text-align: center;
     justify-self: center;
     align-self: center;
     margin-left: auto;
     margin-right: auto;
     font-size: 12px;
+}
+.info{
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .btn{
     padding: 1px;

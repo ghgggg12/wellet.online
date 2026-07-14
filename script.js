@@ -64,8 +64,8 @@ const CSS = {
     const PAUSE_BEFORE_TYPE = 500;
     
     let index = 0;
-    let isDeleting = false;
-    let isPaused = false;
+    let isDeleting = 0;
+    let isPaused = 0;
     let animationId = null;
     let timeoutId = null;
     
@@ -75,10 +75,10 @@ const CSS = {
         if (!isDeleting) {
             index++;
             if (index > text.length) {
-                isDeleting = true;
-                isPaused = true;
+                isDeleting = 1;
+                isPaused = 1;
                 timeoutId = setTimeout(() => {
-                    isPaused = false;
+                    isPaused = 0;
                     scheduleNextUpdate();
                 }, PAUSE_BEFORE_DELETE);
                 return;
@@ -86,11 +86,11 @@ const CSS = {
         } else {
             index--;
             if (index < 1) {
-                isDeleting = false;
+                isDeleting = 0;
                 index = 0;
-                isPaused = true;
+                isPaused = 1;
                 timeoutId = setTimeout(() => {
-                    isPaused = false;
+                    isPaused = 0;
                     scheduleNextUpdate();
                 }, PAUSE_BEFORE_TYPE);
                 return;

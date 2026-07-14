@@ -16,10 +16,14 @@ const translations = {
   }
 };
 
-let currentLanguage = 'en';
-let translatableElements = null;
-let themeIcon = null;
-let langIcon = null;
+const state = {
+    currentLanguage: 'en',
+    translatableElements: null,
+    themeIcon: null,
+    langIcon: null,
+    themeBtn: null,
+    langBtn: null
+};
 
 const THEMES = {
     DARK: 'dark',
@@ -27,15 +31,17 @@ const THEMES = {
 };
 
 const THEME_ICONS = {
-    [THEMES.DARK]: 'icon/dark.svg',
-    [THEMES.LIGHT]: 'icon/white.svg'
+    [THEMES.DARK]:  'assets/icon/dark.svg',
+    [THEMES.LIGHT]: 'assets/icon/white.svg'
 };
 
 const LANGUAGE_ICONS = {
-    'en': 'icon/us.svg',
-    'ru': 'icon/ru.svg',
-    'de': 'icon/de.svg'
+    'en': 'assets/icon/us.svg',
+    'ru': 'assets/icon/ru.svg',
+    'de': 'assets/icon/de.svg'
 };
+
+const LANGUAGES = ['en', 'ru', 'de'];
 
 const ANIMATION = {
     DURATION: 600,
@@ -43,6 +49,12 @@ const ANIMATION = {
     ROTATION: '360deg',
     SCALE: 1.2,
     RESET_TRANSITION: 'transform 0.3s ease'
+};
+
+const CSS = {
+    TRANSITION: 'transition',
+    TRANSFORM: 'transform',
+    ROTATE_ZERO: 'rotate(0deg) scale(1)'
 };
 
 (function() {
@@ -106,19 +118,73 @@ const ANIMATION = {
     scheduleNextUpdate();
 })();
 
+function getElement(id, cache) {
+    if (cache === null) {
+        return document.getElementById(id);
+    }
+    return cache;
+}
+
+function getThemeIcon() {
+    if (state.themeIcon === null) {
+        state.themeIcon = document.getElementById('tmIcon');
+    }
+    return state.themeIcon;
+}
+
+function getLangIcon() {
+    if (state.langIcon === null) {
+        state.langIcon = document.getElementById('langIcon');
+    }
+    return state.langIcon;
+}
+
+function updateIcon(element, src, alt, title) {
+    if (!element) return;
+
+    if (element.src !== src) {
+        element.src = src;
+    }
+    if (alt && element.alt !== alt) {
+        element.alt = alt;
+    }
+    if (title && element.title !== title) {
+        element.title = title;
+    }
+}
+
+function updateLanguageIcon(locale) {
+    const icon = getLangIcon();
+    const src = LANGUAGE_ICONS[locale];
+    if (src) {
+        updateIcon(icon, src, locale.toUpperCase(), locale.toUpperCase());
+    }
+}
+
+function updateThemeIcon(theme) {
+    const icon = getThemeIcon();
+    const src = THEME_ICONS[theme];
+    if (src) {
+        const label = theme.charAt(0).toUpperCase() + theme.slice(1);
+        updateIcon(icon, src, `${label} Theme`, `${label} Theme`);
+    }
+}
+
 function setLanguage(locale) {
-    currentLanguage = locale;
+    state.currentLanguage = locale;
     const langTranslations = translations[locale];
 
-    if (translatableElements === null) {
-        translatableElements = document.querySelectorAll('[data-i18n]');
+    if (state.translatableElements === null) {
+        state.translatableElements = document.querySelectorAll('[data-i18n]');
     }
 
-    for (let i = translatableElements.length; i--;) {
-        const element = translatableElements[i];
+    const elements = state.translatableElements;
+    for (let i = elements.length; i--;) {
+        const element = elements[i];
         const key = element.getAttribute('data-i18n');
-        if (langTranslations[key]) {
-            element.textContent = langTranslations[key];
+        const translation = langTranslations[key];
+        if (translation && element.textContent !== translation) {
+            element.textContent = translation;
         }
     }
     
@@ -133,25 +199,23 @@ function toggleTheme() {
     const icon = getThemeIcon();
 
     if (!icon) {
-        body.classList.toggle('dark-theme');
-        const isDark = body.classList.contains('dark-theme');
+        const isDark = body.classList.toggle('dark-theme');
         localStorage.setItem('theme', isDark ? THEMES.DARK : THEMES.LIGHT);
         return;
     }
 
-    icon.style.transition = `transform ${ANIMATION.DURATION}ms ${ANIMATION.EASING}`;
-    icon.style.transform = `rotate(${ANIMATION.ROTATION}) scale(${ANIMATION.SCALE})`;
+    icon.style[CSS.TRANSITION] = `transform ${ANIMATION.DURATION}ms ${ANIMATION.EASING}`;
+    icon.style[CSS.TRANSFORM] = `rotate(${ANIMATION.ROTATION}) scale(${ANIMATION.SCALE})`;
 
     requestAnimationFrame(() => {
         setTimeout(() => {
             const isDark = body.classList.toggle('dark-theme');
             const theme = isDark ? THEMES.DARK : THEMES.LIGHT;
 
-            icon.src = THEME_ICONS[theme];
-            icon.alt = `${theme.charAt(0).toUpperCase() + theme.slice(1)} Theme`;
+            updateThemeIcon(theme);
 
-            icon.style.transition = ANIMATION.RESET_TRANSITION;
-            icon.style.transform = 'rotate(0deg) scale(1)';
+            icon.style[CSS.TRANSITION] = ANIMATION.RESET_TRANSITION;
+            icon.style[CSS.TRANSFORM] = CSS.ROTATE_ZERO;
             
             localStorage.setItem('theme', theme);
         }, ANIMATION.DURATION / 2);
@@ -159,46 +223,18 @@ function toggleTheme() {
 }
 
 function toggleLanguage() {
-    const LANGUAGES = ['en', 'ru', 'de'];
-    const currentIndex = LANGUAGES.indexOf(currentLanguage);
+    const currentIndex = LANGUAGES.indexOf(state.currentLanguage);
     const nextIndex = (currentIndex + 1) % LANGUAGES.length;
     setLanguage(LANGUAGES[nextIndex]);
-}
-
-function updateLanguageIcon(locale) {
-    if (langIcon === null) {
-        langIcon = document.getElementById('langIcon');
-    }
-    
-    if (langIcon && LANGUAGE_ICONS[locale]) {
-        const newSrc = LANGUAGE_ICONS[locale];
-        if (langIcon.src !== newSrc) {
-            langIcon.src = newSrc;
-        }
-        langIcon.alt = locale.toUpperCase();
-        langIcon.title = locale.toUpperCase();
-    }
-}
-
-function getThemeIcon() {
-    if (themeIcon === null) {
-        themeIcon = document.getElementById('tmIcon');
-    }
-    return themeIcon;
 }
 
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme') || THEMES.LIGHT;
     const body = document.body;
-    const icon = getThemeIcon();
 
-    const isDark = savedTheme === THEMES.DARK;
-    body.classList.toggle('dark-theme', isDark);
-    
-    if (icon) {
-        icon.src = THEME_ICONS[savedTheme];
-        icon.alt = `${savedTheme.charAt(0).toUpperCase() + savedTheme.slice(1)} Theme`;
-    }
+    body.classList.toggle('dark-theme', savedTheme === THEMES.DARK);
+
+    updateThemeIcon(savedTheme);
 }
 
 function loadLanguage() {
@@ -207,8 +243,28 @@ function loadLanguage() {
 }
 
 function init() {
+    state.themeBtn = document.getElementById('themeBtn');
+    state.langBtn = document.getElementById('langBtn');
+
+    if (state.themeBtn) {
+        state.themeBtn.addEventListener('click', toggleTheme);
+    }
+    
+    if (state.langBtn) {
+        state.langBtn.addEventListener('click', toggleLanguage);
+    }
+
     loadLanguage();
     loadTheme();
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+window.addEventListener('beforeunload', function() {
+    if (window.timeoutId) {
+        clearTimeout(window.timeoutId);
+    }
+    if (window.animationId) {
+        cancelAnimationFrame(window.animationId);
+    }
+});

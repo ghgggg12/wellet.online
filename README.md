@@ -1,4 +1,4 @@
-![Alt text](https://github.com/ghgggg12/how-r-u-/blob/main/sddf.png?raw=true)
+![Alt text](https://github.com/ghgggg12/how-r-u-/blob/main/howru.png?raw=true)
 <br>
 <h1>My first website.</h1>
 <h4>Used:</h4>

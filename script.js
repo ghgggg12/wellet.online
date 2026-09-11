@@ -2,17 +2,17 @@ const translations = {
   ru: {
     aka:   "он же ZAZOR",
     proof: "Переводчик Lunar client",
-    info:  "Изучаю GLua, HTML, CSS и JS."
+    info:  "Изучаю GLua, HTML, CSS и TS."
   },
   en: {
     aka:   "a.k.a. ZAZOR",
     proof: "Proofreader Lunar Client",
-    info:  "Learning GLua, HTML, CSS and JS."
+    info:  "Learning GLua, HTML, CSS and TS."
   },
   de: {
     aka:   "a.k.a. ZAZOR",
     proof: "Übersetzer bei Lunar Client",
-    info:  "Lerne GLua, HTML, CSS und JS."
+    info:  "Lerne GLua, HTML, CSS und TS."
   }
 };
 
